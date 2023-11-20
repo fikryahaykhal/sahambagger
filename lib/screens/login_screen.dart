@@ -24,174 +24,178 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                Color(0xFF3594DD),
-                Color(0xFF4563DB),
-                Color(0xFF5036D5),
-                Color(0xFF5B16D0),
-              ],
+        child: SingleChildScrollView(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.1, 0.4, 0.7, 0.9],
+                colors: [
+                  Color(0xFF3594DD),
+                  Color(0xFF4563DB),
+                  Color(0xFF5036D5),
+                  Color(0xFF5B16D0),
+                ],
+              ),
             ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 40.0,
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                    left: -75,
-                    top: -10,
-                    child: Image.asset(
-                      'assets/images/password.png',
-                      opacity: const AlwaysStoppedAnimation(.1),
-                    )),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    const SizedBox(
-                      height: 180,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 40),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Welcome,',
-                            style: kTitleBoldStyle,
-                          ),
-                          Text(
-                            'Sign in to continue',
-                            style: kSubtitleStyle,
-                          ),
-                          SizedBox(
-                            height: 40,
-                          )
-                        ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 40.0,
+              ),
+              child: Stack(
+                children: [
+                  Positioned(
+                      left: -75,
+                      top: -10,
+                      child: Image.asset(
+                        'assets/images/password.png',
+                        opacity: const AlwaysStoppedAnimation(.1),
+                      )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      const SizedBox(
+                        height: 180,
                       ),
-                    ),
-                    Center(
-                      child: Container(
-                          child: Column(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: ClipRRect(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(16)),
-                              child: BackdropFilter(
-                                filter:
-                                    ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                child: Container(
-                                  padding: const EdgeInsets.all(24),
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withAlpha(15),
-                                    border: Border.all(
-                                        color: Colors.white.withAlpha(10)),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(16)),
-                                  ),
-                                  child: Column(children: [
-                                    const SizedBox(height: 16),
-                                    userInput(emailController, 'Email',
-                                        TextInputType.emailAddress, false),
-                                    const SizedBox(height: 8),
-                                    userInput(passwordController, 'Password',
-                                        TextInputType.visiblePassword, true),
-                                    const SizedBox(
-                                      height: 8,
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Welcome,',
+                              style: kTitleBoldStyle,
+                            ),
+                            Text(
+                              'Sign in to continue',
+                              style: kSubtitleStyle,
+                            ),
+                            SizedBox(
+                              height: 40,
+                            )
+                          ],
+                        ),
+                      ),
+                      Center(
+                        child: Container(
+                            child: Column(
+                          children: [
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 24),
+                              child: ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(16)),
+                                child: BackdropFilter(
+                                  filter:
+                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(24),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withAlpha(15),
+                                      border: Border.all(
+                                          color: Colors.white.withAlpha(10)),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(16)),
                                     ),
-                                    Row(
-                                      children: [
-                                        RoundedButton(
-                                            text: 'Login',
-                                            press: () {},
-                                            color: Colors.teal,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.30,
-                                            textColor: Colors.white),
-                                        const Expanded(child: SizedBox()),
-                                        RoundedButton(
-                                            text: 'Login via Google',
-                                            press: () {},
-                                            color: Colors.white,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.45,
-                                            textColor: Colors.red.shade900),
-                                      ],
-                                    )
-                                  ]),
+                                    child: Column(children: [
+                                      const SizedBox(height: 16),
+                                      userInput(emailController, 'Email',
+                                          TextInputType.emailAddress, false),
+                                      const SizedBox(height: 8),
+                                      userInput(passwordController, 'Password',
+                                          TextInputType.visiblePassword, true),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Row(
+                                        children: [
+                                          RoundedButton(
+                                              text: 'Login',
+                                              press: () {},
+                                              color: Colors.teal,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.30,
+                                              textColor: Colors.white),
+                                          const Expanded(child: SizedBox()),
+                                          RoundedButton(
+                                              text: 'Login via Google',
+                                              press: () {},
+                                              color: Colors.white,
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.45,
+                                              textColor: Colors.red.shade900),
+                                        ],
+                                      )
+                                    ]),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 32,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: 'Not a VIP User? ',
-                                    style: kContentStyle),
-                                TextSpan(
-                                    text: 'Sign Up Here',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Colors.white,
-                                      fontFamily: 'CM Sans Serif',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.0,
-                                      height: 1.2,
-                                    ),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        Navigator.push(
-                                            context,
-                                            CupertinoPageRoute(
-                                                builder: (context) =>
-                                                    RegisterScreen()));
-                                      })
-                              ],
+                            const SizedBox(
+                              height: 32,
                             ),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: 'Forgot Password',
-                                    style: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: Colors.white,
-                                      fontFamily: 'CM Sans Serif',
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15.0,
-                                      height: 1.2,
-                                    ),
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {})
-                              ],
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: 'Not a VIP User? ',
+                                      style: kContentStyle),
+                                  TextSpan(
+                                      text: 'Sign Up Here',
+                                      style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.white,
+                                        fontFamily: 'CM Sans Serif',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.0,
+                                        height: 1.2,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          Navigator.push(
+                                              context,
+                                              CupertinoPageRoute(
+                                                  builder: (context) =>
+                                                      RegisterScreen()));
+                                        })
+                                ],
+                              ),
                             ),
-                          )
-                        ],
-                      )),
-                    )
-                  ],
-                ),
-              ],
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                      text: 'Forgot Password',
+                                      style: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: Colors.white,
+                                        fontFamily: 'CM Sans Serif',
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15.0,
+                                        height: 1.2,
+                                      ),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {})
+                                ],
+                              ),
+                            )
+                          ],
+                        )),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
