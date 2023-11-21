@@ -1,10 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main/components/rounded_button.dart';
+import 'package:main/components/trasnparent_card.dart';
+import 'package:main/screens/home_screen.dart';
 import 'package:main/screens/register_screen.dart';
 import 'package:main/utilities/styles.dart';
 
@@ -40,20 +40,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 40.0,
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                      left: -75,
-                      top: -10,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: -0,
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Transform.flip(
+                      flipX: true,
                       child: Image.asset(
-                        'assets/images/password.png',
-                        opacity: const AlwaysStoppedAnimation(.1),
-                      )),
-                  Column(
+                        'assets/images/bg.jpg',
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.deepPurple.withOpacity(0.45),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 40.0),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       const SizedBox(
@@ -79,77 +87,55 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       Center(
-                        child: Container(
+                        child: TransparentCard(
                             child: Column(
                           children: [
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(16)),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                  child: Container(
-                                    padding: const EdgeInsets.all(24),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withAlpha(15),
-                                      border: Border.all(
-                                          color: Colors.white.withAlpha(10)),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(16)),
-                                    ),
-                                    child: Column(children: [
-                                      const SizedBox(height: 16),
-                                      userInput(emailController, 'Email',
-                                          TextInputType.emailAddress, false),
-                                      const SizedBox(height: 8),
-                                      userInput(passwordController, 'Password',
-                                          TextInputType.visiblePassword, true),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: [
-                                          RoundedButton(
-                                              text: 'Login',
-                                              press: () {},
-                                              color: Colors.teal,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.30,
-                                              textColor: Colors.white),
-                                          const Expanded(child: SizedBox()),
-                                          RoundedButton(
-                                              text: 'Login via Google',
-                                              press: () {},
-                                              color: Colors.white,
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.45,
-                                              textColor: Colors.red.shade900),
-                                        ],
-                                      )
-                                    ]),
-                                  ),
-                                ),
-                              ),
+                            const SizedBox(height: 16),
+                            userInput(emailController, 'Email',
+                                TextInputType.emailAddress, false),
+                            const SizedBox(height: 8),
+                            userInput(passwordController, 'Password',
+                                TextInputType.visiblePassword, true),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Row(
+                              children: [
+                                RoundedButton(
+                                    text: 'Login',
+                                    press: () {
+                                      Navigator.push(
+                                          context,
+                                          CupertinoPageRoute(
+                                              builder: (context) =>
+                                                  const HomeScreen()));
+                                    },
+                                    color: Colors.pink.shade800,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.30,
+                                    textColor: Colors.white),
+                                const Expanded(child: SizedBox()),
+                                RoundedButton(
+                                    text: 'Login via Google',
+                                    press: () {},
+                                    color: Colors.white,
+                                    width: MediaQuery.of(context).size.width *
+                                        0.45,
+                                    textColor: Colors.pink.shade800),
+                              ],
                             ),
                             const SizedBox(
-                              height: 32,
+                              height: 16,
                             ),
                             RichText(
                               text: TextSpan(
                                 children: [
-                                  TextSpan(
+                                  const TextSpan(
                                       text: 'Not a VIP User? ',
                                       style: kContentStyle),
                                   TextSpan(
                                       text: 'Sign Up Here',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         decoration: TextDecoration.underline,
                                         color: Colors.white,
                                         fontFamily: 'CM Sans Serif',
@@ -163,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                               context,
                                               CupertinoPageRoute(
                                                   builder: (context) =>
-                                                      RegisterScreen()));
+                                                      const RegisterScreen()));
                                         })
                                 ],
                               ),
@@ -176,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 children: [
                                   TextSpan(
                                       text: 'Forgot Password',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         decoration: TextDecoration.underline,
                                         color: Colors.white,
                                         fontFamily: 'CM Sans Serif',
@@ -194,8 +180,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       )
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -210,7 +196,7 @@ class _LoginScreenState extends State<LoginScreen> {
       margin: const EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(30)),
+          borderRadius: BorderRadius.circular(8)),
       child: Padding(
         padding: const EdgeInsets.only(left: 25.0, top: 15, right: 25),
         child: TextField(

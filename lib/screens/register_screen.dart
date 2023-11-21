@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:main/components/trasnparent_card.dart';
 import 'package:main/utilities/styles.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -38,20 +39,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 40.0,
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                      left: -75,
-                      top: -10,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: -0,
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Transform.flip(
+                      flipX: true,
                       child: Image.asset(
-                        'assets/images/password.png',
-                        opacity: const AlwaysStoppedAnimation(.1),
-                      )),
-                  Column(
+                        'assets/images/bg_regis.jpg',
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: Colors.deepPurple.withOpacity(0.45),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 40.0,
+                  ),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: <Widget>[
                       const SizedBox(
@@ -73,73 +84,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                       Center(
-                        child: Container(
-                            child: Column(
+                        child: Column(
                           children: [
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24),
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(16)),
-                                child: BackdropFilter(
-                                  filter:
-                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                                  child: Container(
-                                    padding: const EdgeInsets.all(24),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white.withAlpha(15),
-                                      border: Border.all(
-                                          color: Colors.white.withAlpha(10)),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(16)),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(height: 16),
-                                        userInput(nameController, 'Full Name',
-                                            TextInputType.text, false, 35),
-                                        const SizedBox(height: 8),
-                                        userInput(ageController, 'Age',
-                                            TextInputType.number, false, 3),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        userInput(hpController, 'Phone Number',
-                                            TextInputType.phone, false, 14),
-                                        const SizedBox(height: 8),
-                                        userInput(
-                                            emailController,
-                                            'Email',
-                                            TextInputType.emailAddress,
-                                            false,
-                                            30),
-                                        const SizedBox(
-                                          height: 8,
-                                        ),
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 14),
-                                          child: const Text(
-                                            'Dari mana Anda mengenal Sahambagger?',
-                                            style: kContentStyle,
-                                          ),
-                                        ),
-                                      ],
+                            TransparentCard(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 16),
+                                  userInput(nameController, 'Full Name',
+                                      TextInputType.text, false, 35),
+                                  const SizedBox(height: 8),
+                                  userInput(ageController, 'Age',
+                                      TextInputType.number, false, 3),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  userInput(hpController, 'Phone Number',
+                                      TextInputType.phone, false, 14),
+                                  const SizedBox(height: 8),
+                                  userInput(emailController, 'Email',
+                                      TextInputType.emailAddress, false, 30),
+                                  const SizedBox(
+                                    height: 8,
+                                  ),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 14),
+                                    child: const Text(
+                                      'Dari mana Anda mengenal Sahambagger?',
+                                      style: kContentStyle,
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
                             ),
                           ],
-                        )),
+                        ),
                       )
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
