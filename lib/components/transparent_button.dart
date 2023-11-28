@@ -33,7 +33,7 @@ class TrasnparentButton extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple.withAlpha(90),
+                  color: color,
                   border: Border.all(color: Colors.white.withAlpha(20)),
                   borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),

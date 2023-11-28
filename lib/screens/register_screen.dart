@@ -64,42 +64,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ],
                     ),
                   ),
-                  Center(
-                    child: Column(
-                      children: [
-                        TransparentCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const SizedBox(height: 16),
-                              userInput(nameController, 'Full Name',
-                                  TextInputType.text, false, 35),
-                              const SizedBox(height: 8),
-                              userInput(ageController, 'Age',
-                                  TextInputType.number, false, 3),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              userInput(hpController, 'Phone Number',
-                                  TextInputType.phone, false, 14),
-                              const SizedBox(height: 8),
-                              userInput(emailController, 'Email',
-                                  TextInputType.emailAddress, false, 30),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 14),
-                                child: const Text(
-                                  'Dari mana Anda mengenal Sahambagger?',
-                                  style: kContentStyle,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          TransparentCard(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 16),
+                                userInput(nameController, 'Full Name',
+                                    TextInputType.text, false, 35),
+                                const SizedBox(height: 8),
+                                userInput(ageController, 'Age',
+                                    TextInputType.number, false, 3),
+                                const SizedBox(
+                                  height: 8,
                                 ),
-                              ),
-                            ],
+                                userInput(hpController, 'Phone Number',
+                                    TextInputType.phone, false, 14),
+                                const SizedBox(height: 8),
+                                userInput(emailController, 'Email',
+                                    TextInputType.emailAddress, false, 30),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
+                                  child: const Text(
+                                    'Dari mana Anda mengenal Sahambagger?',
+                                    style: kContentStyle,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   )
                 ],

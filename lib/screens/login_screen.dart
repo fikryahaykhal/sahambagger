@@ -68,95 +68,100 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ),
-                  Center(
-                    child: TransparentCard(
-                        child: Column(
-                      children: [
-                        const SizedBox(height: 16),
-                        userInput(emailController, 'Email',
-                            TextInputType.emailAddress, false),
-                        const SizedBox(height: 8),
-                        userInput(passwordController, 'Password',
-                            TextInputType.visiblePassword, true),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Row(
-                          children: [
-                            RoundedButton(
-                                text: 'Login',
-                                press: () {
-                                  Navigator.push(
-                                      context,
-                                      CupertinoPageRoute(
-                                          builder: (context) =>
-                                              const HomeScreen()));
-                                },
-                                color: Colors.pink.shade800,
-                                width: MediaQuery.of(context).size.width * 0.30,
-                                textColor: Colors.white),
-                            const Expanded(child: SizedBox()),
-                            RoundedButton(
-                                text: 'Login via Google',
-                                press: () {},
-                                color: Colors.white,
-                                width: MediaQuery.of(context).size.width * 0.45,
-                                textColor: Colors.pink.shade800),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 16,
-                        ),
-                        RichText(
-                          text: TextSpan(
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Center(
+                      child: TransparentCard(
+                          child: Column(
+                        children: [
+                          const SizedBox(height: 16),
+                          userInput(emailController, 'Email',
+                              TextInputType.emailAddress, false),
+                          const SizedBox(height: 8),
+                          userInput(passwordController, 'Password',
+                              TextInputType.visiblePassword, true),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Row(
                             children: [
-                              const TextSpan(
-                                  text: 'Not a VIP User? ',
-                                  style: kContentStyle),
-                              TextSpan(
-                                  text: 'Sign Up Here',
-                                  style: const TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.white,
-                                    fontFamily: 'CM Sans Serif',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15.0,
-                                    height: 1.2,
-                                  ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {
-                                      Navigator.push(
-                                          context,
-                                          CupertinoPageRoute(
-                                              builder: (context) =>
-                                                  const RegisterScreen()));
-                                    })
+                              RoundedButton(
+                                  text: 'Login',
+                                  press: () {
+                                    Navigator.push(
+                                        context,
+                                        CupertinoPageRoute(
+                                            builder: (context) =>
+                                                const HomeScreen()));
+                                  },
+                                  color: Colors.pink.shade800,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.30,
+                                  textColor: Colors.white),
+                              const Expanded(child: SizedBox()),
+                              RoundedButton(
+                                  text: 'Login via Google',
+                                  press: () {},
+                                  color: Colors.white,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.45,
+                                  textColor: Colors.pink.shade800),
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                  text: 'Forgot Password',
-                                  style: const TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.white,
-                                    fontFamily: 'CM Sans Serif',
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15.0,
-                                    height: 1.2,
-                                  ),
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () {})
-                            ],
+                          const SizedBox(
+                            height: 16,
                           ),
-                        )
-                      ],
-                    )),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                    text: 'Not a VIP User? ',
+                                    style: kContentStyle),
+                                TextSpan(
+                                    text: 'Sign Up Here',
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.white,
+                                      fontFamily: 'CM Sans Serif',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15.0,
+                                      height: 1.2,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.push(
+                                            context,
+                                            CupertinoPageRoute(
+                                                builder: (context) =>
+                                                    const RegisterScreen()));
+                                      })
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                    text: 'Forgot Password',
+                                    style: const TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Colors.white,
+                                      fontFamily: 'CM Sans Serif',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15.0,
+                                      height: 1.2,
+                                    ),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {})
+                              ],
+                            ),
+                          )
+                        ],
+                      )),
+                    ),
                   )
                 ],
               ),

@@ -13,7 +13,6 @@ class TransparentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: BackdropFilter(
