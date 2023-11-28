@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:main/screens/dashboard_screen.dart';
 import 'package:main/screens/learning_screen.dart';
+import 'package:main/screens/onboard_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

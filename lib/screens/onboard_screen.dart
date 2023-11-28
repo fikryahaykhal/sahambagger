@@ -60,45 +60,48 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     const Expanded(
                       child: SizedBox(),
                     ),
-                    TransparentCard(
-                      child: Column(
-                        children: [
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          const Text(
-                            'Simplify High Return Investment',
-                            style: kSubtitleBoldStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          const Text(
-                            'To ensure the best experience and to give us clues how to help you, Please answer this questions!',
-                            style: kContentStyle,
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: 24,
-                          ),
-                          TrasnparentButton(
-                            text: 'Get Started',
-                            press: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const LoginScreen()));
-                            },
-                            color: Colors.teal,
-                            textColor: Colors.white,
-                            width: MediaQuery.of(context).size.width * 0.5,
-                          ),
-                          const SizedBox(
-                            height: 16,
-                          )
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: TransparentCard(
+                        child: Column(
+                          children: [
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            const Text(
+                              'Simplify High Return Investment',
+                              style: kSubtitleBoldStyle,
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            const Text(
+                              'To ensure the best experience and to give us clues how to help you, Please answer this questions!',
+                              style: kContentStyle,
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            TrasnparentButton(
+                              text: 'Get Started',
+                              press: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const LoginScreen()));
+                              },
+                              color: Colors.teal,
+                              textColor: Colors.white,
+                              width: MediaQuery.of(context).size.width * 0.5,
+                            ),
+                            const SizedBox(
+                              height: 16,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(
