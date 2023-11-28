@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.9
   animated_custom_dropdown: ^2.0.0
+  decorated_dropdownbutton: ^0.0.3
+  dropdown_model_list: ^1.1.6
+  extended_tabs: ^4.1.0
 
 dev_dependencies:
   flutter_test:

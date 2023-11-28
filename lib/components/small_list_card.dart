@@ -2,10 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class ListCard extends StatelessWidget {
+class SmallListCard extends StatelessWidget {
   final Widget child;
 
-  const ListCard({
+  const SmallListCard({
     super.key,
     required this.child,
   });
@@ -13,15 +13,14 @@ class ListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 24),
-      width: MediaQuery.of(context).size.width * 0.7,
-      height: MediaQuery.of(context).size.height * 0.23,
+      margin: const EdgeInsets.only(bottom: 24),
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.1,
       child: ClipRRect(
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Container(
-            padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: Colors.blue.shade200.withAlpha(25),
               border: Border.all(color: Colors.white.withAlpha(25)),

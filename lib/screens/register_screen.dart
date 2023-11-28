@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main/components/trasnparent_card.dart';
@@ -21,112 +19,93 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.1, 0.4, 0.7, 0.9],
-                colors: [
-                  Color(0xFF3594DD),
-                  Color(0xFF4563DB),
-                  Color(0xFF5036D5),
-                  Color(0xFF5B16D0),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Positioned(
+              left: -0,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Transform.flip(
+                  flipX: true,
+                  child: Image.asset(
+                    'assets/images/bg_regis.jpg',
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height,
+              color: Colors.deepPurple.withOpacity(0.45),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 40.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  const SizedBox(
+                    height: 80,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Let me help you',
+                          style: kTitleBoldStyle,
+                        ),
+                        SizedBox(
+                          height: 40,
+                        )
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        TransparentCard(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 16),
+                              userInput(nameController, 'Full Name',
+                                  TextInputType.text, false, 35),
+                              const SizedBox(height: 8),
+                              userInput(ageController, 'Age',
+                                  TextInputType.number, false, 3),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              userInput(hpController, 'Phone Number',
+                                  TextInputType.phone, false, 14),
+                              const SizedBox(height: 8),
+                              userInput(emailController, 'Email',
+                                  TextInputType.emailAddress, false, 30),
+                              const SizedBox(
+                                height: 8,
+                              ),
+                              Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 14),
+                                child: const Text(
+                                  'Dari mana Anda mengenal Sahambagger?',
+                                  style: kContentStyle,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: -0,
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: Transform.flip(
-                      flipX: true,
-                      child: Image.asset(
-                        'assets/images/bg_regis.jpg',
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  color: Colors.deepPurple.withOpacity(0.45),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 40.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 80,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Let me help you',
-                              style: kTitleBoldStyle,
-                            ),
-                            SizedBox(
-                              height: 40,
-                            )
-                          ],
-                        ),
-                      ),
-                      Center(
-                        child: Column(
-                          children: [
-                            TransparentCard(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 16),
-                                  userInput(nameController, 'Full Name',
-                                      TextInputType.text, false, 35),
-                                  const SizedBox(height: 8),
-                                  userInput(ageController, 'Age',
-                                      TextInputType.number, false, 3),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  userInput(hpController, 'Phone Number',
-                                      TextInputType.phone, false, 14),
-                                  const SizedBox(height: 8),
-                                  userInput(emailController, 'Email',
-                                      TextInputType.emailAddress, false, 30),
-                                  const SizedBox(
-                                    height: 8,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 14),
-                                    child: const Text(
-                                      'Dari mana Anda mengenal Sahambagger?',
-                                      style: kContentStyle,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          ],
         ),
       ),
     );

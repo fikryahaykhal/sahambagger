@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/onboard_screen.dart';
+import 'package:main/screens/dashboard_screen.dart';
+import 'package:main/screens/learning_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,16 +10,15 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Saham Bagger',
+      title: 'Sahambagger',
       theme: ThemeData(
           primaryColor: Colors.deepPurple,
           scaffoldBackgroundColor: Colors.white),
-      home: const OnboardingScreen(),
+      home: const LearningScreen(),
     );
   }
 }

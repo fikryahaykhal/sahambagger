@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/screens/home_screen.dart';
@@ -22,168 +21,147 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: [0.1, 0.4, 0.7, 0.9],
-                colors: [
-                  Color(0xFF3594DD),
-                  Color(0xFF4563DB),
-                  Color(0xFF5036D5),
-                  Color(0xFF5B16D0),
-                ],
-              ),
-            ),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: -0,
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: Transform.flip(
-                      flipX: true,
-                      child: Image.asset(
-                        'assets/images/bg.jpg',
-                        fit: BoxFit.fitHeight,
-                      ),
-                    ),
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Positioned(
+              left: -0,
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Transform.flip(
+                  flipX: true,
+                  child: Image.asset(
+                    'assets/images/bg.jpg',
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height,
-                  color: Colors.deepPurple.withOpacity(0.45),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 40.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 180,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 40),
-                        child: const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height,
+              color: Colors.deepPurple.withOpacity(0.45),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  const SizedBox(
+                    height: 180,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Welcome,',
+                          style: kTitleBoldStyle,
+                        ),
+                        Text(
+                          'Sign in to continue',
+                          style: kSubtitleStyle,
+                        ),
+                        SizedBox(
+                          height: 40,
+                        )
+                      ],
+                    ),
+                  ),
+                  Center(
+                    child: TransparentCard(
+                        child: Column(
+                      children: [
+                        const SizedBox(height: 16),
+                        userInput(emailController, 'Email',
+                            TextInputType.emailAddress, false),
+                        const SizedBox(height: 8),
+                        userInput(passwordController, 'Password',
+                            TextInputType.visiblePassword, true),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Row(
                           children: [
-                            Text(
-                              'Welcome,',
-                              style: kTitleBoldStyle,
-                            ),
-                            Text(
-                              'Sign in to continue',
-                              style: kSubtitleStyle,
-                            ),
-                            SizedBox(
-                              height: 40,
-                            )
+                            RoundedButton(
+                                text: 'Login',
+                                press: () {
+                                  Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                          builder: (context) =>
+                                              const HomeScreen()));
+                                },
+                                color: Colors.pink.shade800,
+                                width: MediaQuery.of(context).size.width * 0.30,
+                                textColor: Colors.white),
+                            const Expanded(child: SizedBox()),
+                            RoundedButton(
+                                text: 'Login via Google',
+                                press: () {},
+                                color: Colors.white,
+                                width: MediaQuery.of(context).size.width * 0.45,
+                                textColor: Colors.pink.shade800),
                           ],
                         ),
-                      ),
-                      Center(
-                        child: TransparentCard(
-                            child: Column(
-                          children: [
-                            const SizedBox(height: 16),
-                            userInput(emailController, 'Email',
-                                TextInputType.emailAddress, false),
-                            const SizedBox(height: 8),
-                            userInput(passwordController, 'Password',
-                                TextInputType.visiblePassword, true),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              children: [
-                                RoundedButton(
-                                    text: 'Login',
-                                    press: () {
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              const TextSpan(
+                                  text: 'Not a VIP User? ',
+                                  style: kContentStyle),
+                              TextSpan(
+                                  text: 'Sign Up Here',
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: Colors.white,
+                                    fontFamily: 'CM Sans Serif',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15.0,
+                                    height: 1.2,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
                                       Navigator.push(
                                           context,
                                           CupertinoPageRoute(
                                               builder: (context) =>
-                                                  const HomeScreen()));
-                                    },
-                                    color: Colors.pink.shade800,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.30,
-                                    textColor: Colors.white),
-                                const Expanded(child: SizedBox()),
-                                RoundedButton(
-                                    text: 'Login via Google',
-                                    press: () {},
+                                                  const RegisterScreen()));
+                                    })
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: 'Forgot Password',
+                                  style: const TextStyle(
+                                    decoration: TextDecoration.underline,
                                     color: Colors.white,
-                                    width: MediaQuery.of(context).size.width *
-                                        0.45,
-                                    textColor: Colors.pink.shade800),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  const TextSpan(
-                                      text: 'Not a VIP User? ',
-                                      style: kContentStyle),
-                                  TextSpan(
-                                      text: 'Sign Up Here',
-                                      style: const TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.white,
-                                        fontFamily: 'CM Sans Serif',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15.0,
-                                        height: 1.2,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Navigator.push(
-                                              context,
-                                              CupertinoPageRoute(
-                                                  builder: (context) =>
-                                                      const RegisterScreen()));
-                                        })
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 12,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                      text: 'Forgot Password',
-                                      style: const TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: Colors.white,
-                                        fontFamily: 'CM Sans Serif',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15.0,
-                                        height: 1.2,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {})
-                                ],
-                              ),
-                            )
-                          ],
-                        )),
-                      )
-                    ],
-                  ),
-                ),
-              ],
+                                    fontFamily: 'CM Sans Serif',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15.0,
+                                    height: 1.2,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {})
+                            ],
+                          ),
+                        )
+                      ],
+                    )),
+                  )
+                ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

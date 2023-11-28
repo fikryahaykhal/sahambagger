@@ -40,3 +40,12 @@ const kContentStyle = TextStyle(
   letterSpacing: 0.8,
   height: 1.2,
 );
+
+const kTitleDashboard = TextStyle(
+  color: Colors.white,
+  fontFamily: 'CM Sans Serif',
+  fontSize: 20.0,
+  fontWeight: FontWeight.w600,
+  letterSpacing: 0.8,
+  height: 1.2,
+);
