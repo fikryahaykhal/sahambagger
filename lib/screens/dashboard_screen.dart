@@ -89,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     child: ListView.builder(
                       itemCount: 4,
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (BuildContext, context) =>
+                      itemBuilder: (buildContext, context) =>
                           ListCard(child: Container()),
                     ),
                   ),

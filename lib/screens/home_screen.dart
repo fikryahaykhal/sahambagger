@@ -145,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                             Text(
                                               'Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.',
-                                              style: kContentStyle,
+                                              style: kMediumContentStyle,
                                               maxLines: 2,
                                               overflow: TextOverflow.ellipsis,
                                             )

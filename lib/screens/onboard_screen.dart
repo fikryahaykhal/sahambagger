@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                             const Text(
                               'To ensure the best experience and to give us clues how to help you, Please answer this questions!',
-                              style: kContentStyle,
+                              style: kMediumContentStyle,
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(

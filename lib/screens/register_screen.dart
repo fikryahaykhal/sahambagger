@@ -95,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       horizontal: 14),
                                   child: const Text(
                                     'Dari mana Anda mengenal Sahambagger?',
-                                    style: kContentStyle,
+                                    style: kMediumContentStyle,
                                   ),
                                 ),
                               ],
@@ -125,7 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Padding(
         padding: const EdgeInsets.only(left: 25.0, top: 15, right: 25),
         child: TextFormField(
-          style: kContentStyle,
+          style: kMediumContentStyle,
           controller: userInput,
           inputFormatters: [LengthLimitingTextInputFormatter(limit)],
           autocorrect: false,
@@ -134,7 +134,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           obscureText: obscure,
           decoration: InputDecoration.collapsed(
             hintText: hintTitle,
-            hintStyle: kContentStyle,
+            hintStyle: kMediumContentStyle,
           ),
           keyboardType: keyboardType,
         ),

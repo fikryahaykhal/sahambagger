@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/dashboard_screen.dart';
-import 'package:main/screens/learning_screen.dart';
 import 'package:main/screens/onboard_screen.dart';
+import 'package:main/screens/profile_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primaryColor: Colors.deepPurple,
           scaffoldBackgroundColor: Colors.white),
-      home: const LearningScreen(),
+      home: const ProfileScreen(),
     );
   }
 }

@@ -40,7 +40,7 @@ class TrasnparentButton extends StatelessWidget {
                 child: Center(
                     child: Text(
                   text,
-                  style: kContentStyle,
+                  style: kMediumContentStyle,
                 )),
               ),
             ),

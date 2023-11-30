@@ -116,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 const TextSpan(
                                     text: 'Not a VIP User? ',
-                                    style: kContentStyle),
+                                    style: kMediumContentStyle),
                                 TextSpan(
                                     text: 'Sign Up Here',
                                     style: const TextStyle(
@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Padding(
         padding: const EdgeInsets.only(left: 25.0, top: 15, right: 25),
         child: TextField(
-          style: kContentStyle,
+          style: kMediumContentStyle,
           controller: userInput,
           autocorrect: false,
           enableSuggestions: false,
@@ -191,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
           obscureText: obscure,
           decoration: InputDecoration.collapsed(
             hintText: hintTitle,
-            hintStyle: kContentStyle,
+            hintStyle: kMediumContentStyle,
           ),
           keyboardType: keyboardType,
         ),

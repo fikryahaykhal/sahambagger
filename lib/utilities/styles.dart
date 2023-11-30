@@ -33,13 +33,20 @@ const kTitleBoldStyle = TextStyle(
   height: 1.5,
 );
 
-const kContentStyle = TextStyle(
+const kMediumContentStyle = TextStyle(
   color: Colors.white,
   fontFamily: 'CM Sans Serif',
   fontSize: 14.0,
   letterSpacing: 0.8,
   height: 1.2,
 );
+const kLargeContentStyle = TextStyle(
+    color: Colors.white,
+    fontFamily: 'CM Sans Serif',
+    fontSize: 16.0,
+    letterSpacing: 0.8,
+    height: 1.2,
+    fontWeight: FontWeight.w600);
 
 const kTitleDashboard = TextStyle(
   color: Colors.white,

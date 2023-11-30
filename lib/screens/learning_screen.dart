@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:main/components/trasnparent_card.dart';
@@ -31,22 +29,22 @@ class _LearningScreenState extends State<LearningScreen>
           body: Column(
             children: [
               Container(
-                color: Color(0xFF000033),
+                color: const Color(0xFF000033),
                 height: 100,
               ),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  color: Color(0xFF000033),
-                  child: Column(
+                  color: const Color(0xFF000033),
+                  child: const Column(
                     children: [
                       Text('Learning Zone', style: kTitleBoldStyle),
-                      const SizedBox(
+                      SizedBox(
                         height: 32,
                       )
                     ],
                   )),
               Container(
-                color: Color(0xFF000033),
+                color: const Color(0xFF000033),
                 child: ExtendedTabBar(
                   indicatorSize: TabBarIndicatorSize.label,
                   indicator: BoxDecoration(
@@ -100,13 +98,13 @@ class _LearningScreenState extends State<LearningScreen>
                 ),
               ),
               Container(
-                color: Color(0xFF000033),
+                color: const Color(0xFF000033),
                 height: 16,
               ),
               Expanded(
                 child: TabBarView(
                   controller: tabController,
-                  children: [
+                  children: const [
                     InsightTab(),
                     ELearningTab(),
                   ],
@@ -121,6 +119,8 @@ class _LearningScreenState extends State<LearningScreen>
 }
 
 class InsightTab extends StatelessWidget {
+  const InsightTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -158,6 +158,8 @@ class InsightTab extends StatelessWidget {
 }
 
 class ELearningTab extends StatelessWidget {
+  const ELearningTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
