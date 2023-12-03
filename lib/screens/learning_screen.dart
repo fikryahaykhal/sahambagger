@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:extended_tabs/extended_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/utilities/styles.dart';
 
+@RoutePage()
 class LearningScreen extends StatefulWidget {
   const LearningScreen({Key? key}) : super(key: key);
 
