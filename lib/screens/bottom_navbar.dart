@@ -27,8 +27,8 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
           return AutoTabsScaffold(
             routes: const [
               HomeRoute(),
-              DashboardRoute(),
               TablesRoute(),
+              DashboardRoute(),
               LearningRoute(),
               ProfileRoute()
             ],
@@ -79,7 +79,7 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
                           width: 30,
                         ),
                       ),
-                      label: 'Beranda',
+                      label: 'Home',
                     ),
                     BottomNavigationBarItem(
                       icon: Container(
@@ -98,7 +98,7 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
                           width: 30,
                         ),
                       ),
-                      label: 'Ziswaf',
+                      label: 'Screener',
                     ),
                     BottomNavigationBarItem(
                       icon: Stack(
@@ -125,7 +125,7 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
                           ),
                         ],
                       ),
-                      label: 'Penyaluran',
+                      label: 'Dashboard',
                     ),
                     BottomNavigationBarItem(
                       activeIcon: Container(
@@ -144,7 +144,7 @@ class _BottomNavbarPageState extends State<BottomNavbarPage> {
                           width: 30,
                         ),
                       ),
-                      label: 'Profile',
+                      label: 'Learning',
                     ),
                     BottomNavigationBarItem(
                       activeIcon: Container(
