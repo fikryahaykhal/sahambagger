@@ -16,7 +16,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      color: Color(0xFF660958),
+      color: const Color(0xFF660958),
       child: SafeArea(
         child: Stack(
           children: [
