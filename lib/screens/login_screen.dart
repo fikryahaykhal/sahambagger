@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:main/route/app_router.gr.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
-import 'package:main/screens/home_screen.dart';
 import 'package:main/screens/register_screen.dart';
 import 'package:main/utilities/styles.dart';
 
@@ -90,11 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               RoundedButton(
                                   text: 'Login',
                                   press: () {
-                                    Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (context) =>
-                                                const HomeScreen()));
+                                    context.router.push(BottomNavbarRoute());
                                   },
                                   color: Colors.pink.shade800,
                                   width:

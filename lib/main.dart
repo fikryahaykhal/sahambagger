@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:main/screens/onboard_screen.dart';
-import 'package:main/screens/profile_screen.dart';
 import 'package:main/route/app_router.dart';
 
 Future<void> main() async {
