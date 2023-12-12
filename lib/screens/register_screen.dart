@@ -12,6 +12,28 @@ class RegisterScreen extends StatefulWidget {
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
+String _selectedItem1 = 'Stockbit';
+List<String> _dropdownItems1 = [
+  'Stockbit',
+  'Instagram',
+  'Youtube',
+  'Tiktok',
+  'Teman',
+  'Google',
+  'Email'
+];
+
+String _selectedItem2 = 'Masih Awam / Baru Mulai';
+List<String> _dropdownItems2 = [
+  'Masih Awam / Baru Mulai',
+  'Instagram',
+  'Youtube',
+  'Tiktok',
+  'Teman',
+  'Google',
+  'Email'
+];
+
 class _RegisterScreenState extends State<RegisterScreen> {
   final nameController = TextEditingController();
   final ageController = TextEditingController();
@@ -27,12 +49,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             Positioned(
               left: -0,
               child: SizedBox(
-                height: MediaQuery.of(context).size.height,
+                height: MediaQuery.of(context).size.height * 2,
                 child: Transform.flip(
                   flipX: true,
                   child: Image.asset(
                     'assets/images/bg_regis.jpg',
-                    fit: BoxFit.fitHeight,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -90,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 userInput(emailController, 'Email',
                                     TextInputType.emailAddress, false, 30),
                                 const SizedBox(
-                                  height: 8,
+                                  height: 16,
                                 ),
                                 Container(
                                   padding: const EdgeInsets.symmetric(
@@ -99,6 +121,112 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     'Dari mana Anda mengenal Sahambagger?',
                                     style: kMediumContentStyle,
                                   ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                dropdownInput(
+                                  _selectedItem1,
+                                  _dropdownItems1,
+                                  (String? newValue) {
+                                    setState(() {
+                                      if (newValue != null) {
+                                        _selectedItem1 =
+                                            newValue; // Update selected item on change
+                                      }
+                                    });
+                                  },
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
+                                  child: const Text(
+                                    'Mana yang paling menggambarkan kemampuan Investasi Anda saat ini?',
+                                    style: kMediumContentStyle,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                dropdownInput(
+                                  _selectedItem2,
+                                  _dropdownItems2,
+                                  (String? newValue) {
+                                    setState(() {
+                                      if (newValue != null) {
+                                        _selectedItem2 = newValue;
+                                      }
+                                    });
+                                  },
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
+                                  child: const Text(
+                                    'Mana yang paling menggambarkan kemampuan Investasi Anda saat ini?',
+                                    style: kMediumContentStyle,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                dropdownInput(
+                                  _selectedItem2,
+                                  _dropdownItems2,
+                                  (String? newValue) {
+                                    setState(() {
+                                      if (newValue != null) {
+                                        _selectedItem2 = newValue;
+                                      }
+                                    });
+                                  },
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
+                                  child: const Text(
+                                    'Mana yang paling menggambarkan kemampuan Investasi Anda saat ini?',
+                                    style: kMediumContentStyle,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                dropdownInput(
+                                  _selectedItem2,
+                                  _dropdownItems2,
+                                  (String? newValue) {
+                                    setState(() {
+                                      if (newValue != null) {
+                                        _selectedItem2 = newValue;
+                                      }
+                                    });
+                                  },
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
+                                  child: const Text(
+                                    'Mana yang paling menggambarkan kemampuan Investasi Anda saat ini?',
+                                    style: kMediumContentStyle,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
+                                dropdownInput(
+                                  _selectedItem2,
+                                  _dropdownItems2,
+                                  (String? newValue) {
+                                    setState(() {
+                                      if (newValue != null) {
+                                        _selectedItem2 = newValue;
+                                      }
+                                    });
+                                  },
                                 ),
                               ],
                             ),
@@ -139,6 +267,47 @@ class _RegisterScreenState extends State<RegisterScreen> {
             hintStyle: kMediumContentStyle,
           ),
           keyboardType: keyboardType,
+        ),
+      ),
+    );
+  }
+
+  Widget dropdownInput(
+    String selectedItem,
+    List<String> dropdownItems,
+    void Function(String?) onChanged,
+  ) {
+    return Container(
+      height: 50,
+      margin: const EdgeInsets.only(bottom: 15),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            value: selectedItem,
+            items: dropdownItems.map((String item) {
+              return DropdownMenuItem<String>(
+                value: item,
+                child: Text(
+                  item,
+                  style: kMediumContentStyle,
+                ),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                onChanged(newValue);
+              }
+            },
+            isExpanded: true,
+            icon: Icon(Icons.arrow_drop_down, color: Colors.white),
+            style: kMediumContentStyle.copyWith(color: Colors.white),
+            dropdownColor: Colors.deepPurple.withOpacity(0.8),
+          ),
         ),
       ),
     );
