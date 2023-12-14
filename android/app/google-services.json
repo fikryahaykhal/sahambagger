@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "694242452251",
+    "project_id": "sahambagger-5c1a3",
+    "storage_bucket": "sahambagger-5c1a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694242452251:android:e209c9659942fdd042a9be",
+        "android_client_info": {
+          "package_name": "com.example.main"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBadAoNmebcpidoeP0SI_zYVYfU7hQSi4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694242452251:android:0bb4601b87a911ae42a9be",
+        "android_client_info": {
+          "package_name": "id.sahambagger.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBadAoNmebcpidoeP0SI_zYVYfU7hQSi4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
