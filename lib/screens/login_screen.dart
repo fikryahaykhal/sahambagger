@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:main/bloc/auth/login/login_cubit.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
+import 'package:main/route/app_router.gr.dart';
 import 'package:main/screens/register_screen.dart';
 import 'package:main/utilities/styles.dart';
 import 'package:main/injector.dart' as di;
@@ -180,11 +181,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
-                                            Navigator.push(
-                                                context,
-                                                CupertinoPageRoute(
-                                                    builder: (context) =>
-                                                        const RegisterScreen()));
+                                            context.router
+                                                .navigate(RegisterRoute());
                                           })
                                   ],
                                 ),
