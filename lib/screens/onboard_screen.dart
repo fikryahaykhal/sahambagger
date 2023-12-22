@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:main/components/transparent_button.dart';
 import 'package:main/components/trasnparent_card.dart';
+import 'package:main/data/services/prefs/preferences.dart';
 import 'package:main/screens/login_screen.dart';
 import 'package:main/utilities/styles.dart';
 
@@ -89,6 +90,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             TrasnparentButton(
                               text: 'Get Started',
                               press: () {
+                                Prefs.setWasStarted(true);
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(

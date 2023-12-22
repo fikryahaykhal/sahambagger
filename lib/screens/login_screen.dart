@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:main/bloc/auth/login/login_cubit.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
+import 'package:main/route/app_router.gr.dart';
 import 'package:main/screens/register_screen.dart';
 import 'package:main/utilities/styles.dart';
 import 'package:main/injector.dart' as di;
@@ -31,11 +32,11 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     emailController.addListener(() {
-      cubit.changeEmail(emailController.text.trim());
+      cubit.changeEmail(emailController.text);
     });
 
     passwordController.addListener(() {
-      cubit.changePassword(passwordController.text.trim());
+      cubit.changePassword(passwordController.text);
     });
     super.initState();
   }
@@ -59,7 +60,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 passwordNode.requestFocus();
               } else if (state.isInError == true) {
                 Fluttertoast.showToast(msg: state.errorMsg);
-              } else if (state.isLoggedIn == true) {}
+              } else if (state.isLoggedIn == true) {
+                context.router.navigate(const BottomNavbarRoute());
+              }
             },
           ),
         ],

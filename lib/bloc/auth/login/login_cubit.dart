@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:main/core/failure.dart';
 import 'package:main/domain/repository/auth_repository.dart';
@@ -29,16 +30,14 @@ class LoginCubit extends Cubit<LoginState> {
       emit(
         state.copyWith(isInProgress: false, isInEmailValid: false),
       );
-    } else if (!email.isEmail()) {
-      emit(
-        state.copyWith(isInProgress: false, isInEmailFormat: false),
-      );
     } else if (password.isEmpty) {
       emit(
         state.copyWith(isInProgress: false, isInPasswordValid: false),
       );
     } else {
       _showLoading();
+
+      debugPrint('Username : $email, Pass : $password');
 
       final result = await _repository.doLogin(email, password);
 
@@ -58,6 +57,8 @@ class LoginCubit extends Cubit<LoginState> {
         ),
       );
     }
+
+    reset();
   }
 
   void _showLoading() {
@@ -76,18 +77,32 @@ class LoginCubit extends Cubit<LoginState> {
     final result = await _repository.doGoogleLogin();
 
     result.fold(
-      (error) => emit(
-        state.copyWith(
-          isInProgress: false,
-          isInError: true,
-          errorMsg: error.message.toString(),
-        ),
-      ),
+      (error) {
+        emit(
+          state.copyWith(
+            isInProgress: false,
+            isInError: true,
+            errorMsg: error.message.toString(),
+          ),
+        );
+      },
       (data) => emit(
         state.copyWith(
           isInProgress: false,
           isLoggedIn: data,
         ),
+      ),
+    );
+
+    reset();
+  }
+
+  void reset() {
+    emit(
+      state.copyWith(
+        isInProgress: false,
+        isInError: false,
+        isLoggedIn: null,
       ),
     );
   }

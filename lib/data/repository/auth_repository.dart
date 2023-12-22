@@ -9,7 +9,7 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either<Failure, bool>> doLogin(
       String username, String password) async {
     try {
-      final user = ParseUser(username, null, password);
+      final user = ParseUser(username, password, null);
       final response = await user.login();
 
       if (!response.success) {
