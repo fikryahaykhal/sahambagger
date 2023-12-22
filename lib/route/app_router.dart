@@ -11,6 +11,7 @@ class AppRouter extends $AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: OnboardingRoute.page),
         AutoRoute(page: LoginRoute.page),
+        AutoRoute(page: SurveyRoute.page),
         AutoRoute(page: RegisterRoute.page),
         AutoRoute(page: BottomNavbarRoute.page, initial: true, guards: [
           DashboardGuard()

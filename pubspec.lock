@@ -141,10 +141,10 @@ packages:
     dependency: transitive
     description:
       name: built_value
-      sha256: c9aabae0718ec394e5bc3c7272e6bb0dc0b32201a08fe185ec1d8401d3e39309
+      sha256: "69acb7007eb2a31dc901512bfe0f7b767168be34cb734835d54c070bfa74c1b2"
       url: "https://pub.dev"
     source: hosted
-    version: "8.8.1"
+    version: "8.8.0"
   characters:
     dependency: transitive
     description:
@@ -269,10 +269,10 @@ packages:
     dependency: "direct main"
     description:
       name: dropdown_model_list
-      sha256: f13d849732ddc7027791b6a855b24234806dbd0e8b584d55524e831c77797165
+      sha256: "1f72dcb26b5fd66c4da5793da95a47090515c05015483081f68c85bc73ba40ab"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.7"
+    version: "1.1.6"
   equatable:
     dependency: "direct main"
     description:

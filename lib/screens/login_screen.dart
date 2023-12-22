@@ -183,11 +183,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
-                                            Navigator.push(
-                                                context,
-                                                CupertinoPageRoute(
-                                                    builder: (context) =>
-                                                        const RegisterScreen()));
+                                            context.router
+                                                .navigate(RegisterRoute());
                                           })
                                   ],
                                 ),
