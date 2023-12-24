@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               const SizedBox(height: 16),
                               userInput(
                                 emailController,
-                                'Email',
+                                'Username',
                                 TextInputType.emailAddress,
                                 false,
                                 focusNode: emailNode,
