@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final VoidCallback press;
-  final Color color, textColor;
+  final Color colorStart, colorEnd, textColor;
   final double width;
 
   const RoundedButton(
       {Key? key,
       required this.text,
       required this.press,
-      required this.color,
+      required this.colorStart,
+      required this.colorEnd,
       required this.width,
       required this.textColor})
       : super(key: key);
@@ -19,24 +20,29 @@ class RoundedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [colorStart, colorEnd],
+          ),
+          borderRadius: BorderRadius.circular(50)),
       width: width,
       height: size.height * 0.05,
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: TextButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(color),
+            backgroundColor: MaterialStatePropertyAll(Colors.transparent),
             shape: MaterialStateProperty.resolveWith<OutlinedBorder>(
               (Set<MaterialState> states) {
                 return RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0), // Border radius
+                  borderRadius: BorderRadius.circular(50.0), // Border radius
                 );
               },
             ),
             side: MaterialStateProperty.resolveWith<BorderSide>(
                 (Set<MaterialState> states) {
               return BorderSide(
-                color: Colors.white,
-                width: 0.2,
+                color: Colors.transparent,
+                width: 0.1,
               );
             })),
         onPressed: press,

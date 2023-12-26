@@ -146,20 +146,23 @@ class _LoginScreenState extends State<LoginScreen> {
                                       press: () {
                                         cubit.sendLoginData();
                                       },
-                                      color: Colors.pink.shade800,
                                       width: MediaQuery.of(context).size.width *
                                           0.30,
-                                      textColor: Colors.white),
+                                      textColor: Colors.white,
+                                      colorStart: Colors.deepPurple.shade900,
+                                      colorEnd: Colors.purpleAccent.shade400),
                                   const Expanded(child: SizedBox()),
                                   RoundedButton(
-                                      text: 'Login via Google',
-                                      press: () {
-                                        cubit.sendGoogleLogin();
-                                      },
-                                      color: Colors.white,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.45,
-                                      textColor: Colors.pink.shade800),
+                                    text: 'Login via Google',
+                                    press: () {
+                                      cubit.sendGoogleLogin();
+                                    },
+                                    width: MediaQuery.of(context).size.width *
+                                        0.45,
+                                    textColor: Colors.pink.shade800,
+                                    colorStart: Colors.white,
+                                    colorEnd: Colors.white,
+                                  ),
                                 ],
                               ),
                               const SizedBox(

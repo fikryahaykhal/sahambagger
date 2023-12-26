@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:main/components/rounded_button.dart';
 import 'package:main/components/transparent_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/data/services/prefs/preferences.dart';
@@ -87,21 +88,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             const SizedBox(
                               height: 24,
                             ),
-                            TrasnparentButton(
-                              text: 'Get Started',
-                              press: () {
-                                Prefs.setWasStarted(true);
+                            RoundedButton(
+                                text: 'Get Started',
+                                press: () {
+                                  Prefs.setWasStarted(true);
 
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const LoginScreen()));
-                              },
-                              color: Colors.teal,
-                              textColor: Colors.white,
-                              width: MediaQuery.of(context).size.width * 0.5,
-                            ),
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen()));
+                                },
+                                width: MediaQuery.of(context).size.width,
+                                textColor: Colors.white,
+                                colorStart: Colors.deepPurple.shade900,
+                                colorEnd: Colors.purpleAccent.shade400),
                             const SizedBox(
                               height: 16,
                             )

@@ -130,7 +130,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: Column(children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.5,
+                        height: MediaQuery.of(context).size.height * 0.51,
                         child: PageView.builder(
                           controller: _pageController,
                           itemCount: 2,
@@ -227,15 +227,15 @@ class _SurveyScreenState extends State<SurveyScreen> {
             });
           },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const Expanded(child: SizedBox()),
         RoundedButton(
-            text: 'Next',
-            press: () {},
-            color: Colors.blue,
-            width: 0,
-            textColor: Colors.white)
+          text: 'Next',
+          press: () {},
+          width: 0,
+          textColor: Colors.white,
+          colorStart: Colors.deepPurple.shade900,
+          colorEnd: Colors.purpleAccent.shade400,
+        )
       ],
     );
   }
@@ -313,8 +313,14 @@ class _SurveyScreenState extends State<SurveyScreen> {
             });
           },
         ),
-        const SizedBox(
-          height: 16,
+        const Expanded(child: SizedBox()),
+        RoundedButton(
+          text: 'Submit',
+          press: () {},
+          width: 0,
+          textColor: Colors.white,
+          colorStart: Colors.deepPurple.shade900,
+          colorEnd: Colors.purpleAccent.shade400,
         )
       ],
     );
