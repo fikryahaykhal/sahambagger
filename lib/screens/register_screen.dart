@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
+import 'package:main/route/app_router.gr.dart';
 import 'package:main/utilities/styles.dart';
 
 @RoutePage()
@@ -103,8 +104,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       Center(
           child: RoundedButton(
               text: 'Submit',
-              press: () {},
-              color: Colors.blue.withAlpha(70),
+              press: () {
+                context.router.navigate(SurveyRoute());
+              },
+              colorStart: Colors.deepPurple.shade900,
+              colorEnd: Colors.purpleAccent.shade400,
               width: MediaQuery.of(context).size.width,
               textColor: Colors.white))
     ]);

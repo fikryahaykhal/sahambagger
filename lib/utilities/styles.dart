@@ -32,7 +32,13 @@ const kTitleBoldStyle = TextStyle(
   letterSpacing: 0.8,
   height: 1.5,
 );
-
+const kSmallContentStyle = TextStyle(
+  color: Colors.white,
+  fontFamily: 'CM Sans Serif',
+  fontSize: 11.0,
+  letterSpacing: 0.8,
+  height: 1.2,
+);
 const kMediumContentStyle = TextStyle(
   color: Colors.white,
   fontFamily: 'CM Sans Serif',
