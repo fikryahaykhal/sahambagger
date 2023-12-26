@@ -8,7 +8,6 @@ import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/route/app_router.gr.dart';
 import 'package:main/utilities/styles.dart';
-import 'package:main/injector.dart' as di;
 
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final hpNode = FocusNode();
   final passNode = FocusNode();
 
-  final cubit = di.locator<RegisterCubit>();
+  final cubit = RegisterCubit();
 
   @override
   void initState() {
@@ -113,9 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
 
           if (state.isInSignUpSuccess) {
-            Fluttertoast.showToast(
-                msg: 'Registrasi berhasil. Silahkan melakukan Login');
-            context.router.replace(const LoginRoute());
+            context.router.replace(const SurveyRoute());
           }
         },
         child: Scaffold(

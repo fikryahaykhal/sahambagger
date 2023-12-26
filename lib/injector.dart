@@ -43,10 +43,4 @@ Future<void> init() async {
       locator(),
     ),
   );
-
-  locator.registerLazySingleton(() => LoginCubit(locator()));
-  locator.registerLazySingleton(() => LearningCubit(locator()));
-  locator.registerLazySingleton(() => ProfileCubit(locator()));
-  locator.registerLazySingleton(() => RegisterCubit(locator()));
-  locator.registerLazySingleton(() => SurveyCubit(locator()));
 }

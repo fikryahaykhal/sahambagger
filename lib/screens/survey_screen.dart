@@ -7,7 +7,6 @@ import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/route/app_router.gr.dart';
 import 'package:main/utilities/styles.dart';
-import 'package:main/injector.dart' as di;
 
 @RoutePage()
 class SurveyScreen extends StatefulWidget {
@@ -77,7 +76,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   int _currentPageIndex = 0;
 
-  final cubit = di.locator<SurveyCubit>();
+  final cubit = SurveyCubit();
 
   @override
   void dispose() {

@@ -1,13 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:main/domain/repository/user_repository.dart';
+import 'package:main/injector.dart' as di;
 
 part 'survey_state.dart';
 part 'survey_cubit.freezed.dart';
 
 class SurveyCubit extends Cubit<SurveyState> {
-  final UserRepository _repository;
-  SurveyCubit(this._repository) : super(SurveyState.initial());
+  final _repository = di.locator<UserRepository>();
+  SurveyCubit() : super(SurveyState.initial());
 
   void setSource(String? value) {
     emit(state.copyWith(source: value ?? ''));

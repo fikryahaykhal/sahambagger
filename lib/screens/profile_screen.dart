@@ -7,7 +7,6 @@ import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/route/app_router.gr.dart';
 import 'package:main/utilities/styles.dart';
-import 'package:main/injector.dart' as di;
 
 @RoutePage()
 class ProfileScreen extends StatefulWidget {
@@ -18,7 +17,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final cubit = di.locator<ProfileCubit>();
+  final cubit = ProfileCubit();
 
   @override
   Widget build(BuildContext context) {

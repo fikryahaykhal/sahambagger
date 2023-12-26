@@ -3,14 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:main/domain/repository/user_repository.dart';
 import 'package:main/utilities/strings.dart';
+import 'package:main/injector.dart' as di;
 
 part 'register_state.dart';
 part 'register_cubit.freezed.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  final UserRepository _repository;
+  final _repository = di.locator<UserRepository>();
 
-  RegisterCubit(this._repository) : super(RegisterState.initial());
+  RegisterCubit() : super(RegisterState.initial());
 
   void setName(String text) {
     emit(state.copyWith(name: text));
