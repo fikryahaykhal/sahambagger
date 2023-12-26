@@ -212,7 +212,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
               press: () {
                 cubit.doSignUp();
               },
-              color: Colors.blue.withAlpha(70),
+              colorStart: Colors.deepPurple.shade900,
+              colorEnd: Colors.purpleAccent.shade400,
               width: MediaQuery.of(context).size.width,
               textColor: Colors.white))
     ]);

@@ -195,7 +195,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   press: () {
                                     showSignOutConfirmation();
                                   },
-                                  color: Colors.red,
+                                  colorStart: Colors.deepPurple.shade900,
+                                  colorEnd: Colors.purpleAccent.shade400,
                                   width: MediaQuery.of(context).size.width,
                                   textColor: Colors.white)
                             ]),
