@@ -106,80 +106,95 @@ class _SurveyScreenState extends State<SurveyScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Positioned(
-              left: -0,
-              child: SizedBox(
-                height: MediaQuery.of(context).size.height,
-                child: Transform.flip(
-                  flipX: true,
-                  child: Image.asset(
-                    'assets/images/bg_regis.jpg',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              color: Colors.deepPurple.withOpacity(0.45),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 40.0,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 40),
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Fill the forms',
-                          style: kTitleBoldStyle,
-                        ),
-                        Text(
-                          'to help us know your preferences',
-                          style: kMediumContentStyle,
-                        ),
-                        SizedBox(
-                          height: 40,
-                        )
-                      ],
+    return BlocProvider.value(
+      value: cubit,
+      child: BlocListener<SurveyCubit, SurveyState>(
+        listener: (context, state) {
+          if (state.isInSubmitSuccess) {
+            context.router.replace(const DashboardRoute());
+          }
+
+          if (state.isInError) {
+            Fluttertoast.showToast(msg: state.errorMsg);
+          }
+        },
+        child: Scaffold(
+          body: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Positioned(
+                  left: -0,
+                  child: SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Transform.flip(
+                      flipX: true,
+                      child: Image.asset(
+                        'assets/images/bg_regis.jpg',
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(children: [
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.5,
-                        child: PageView.builder(
-                          controller: _pageController,
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            return TransparentCard(
-                              child: index == 0
-                                  ? _buildFirstPageContent()
-                                  : _buildSecondPageContent(),
-                            );
-                          },
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.deepPurple.withOpacity(0.45),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 40.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      const SizedBox(
+                        height: 80,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Fill the forms',
+                              style: kTitleBoldStyle,
+                            ),
+                            Text(
+                              'to help us know your preferences',
+                              style: kMediumContentStyle,
+                            ),
+                            SizedBox(
+                              height: 40,
+                            )
+                          ],
                         ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Column(children: [
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.53,
+                            child: PageView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              controller: _pageController,
+                              itemCount: 2,
+                              itemBuilder: (context, index) {
+                                return TransparentCard(
+                                  child: index == 0
+                                      ? _buildFirstPageContent()
+                                      : _buildSecondPageContent(),
+                                );
+                              },
+                            ),
+                          )
+                        ]),
                       )
-                    ]),
-                  )
-                ],
-              ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
