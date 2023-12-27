@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:main/components/trasnparent_card.dart';
 import 'package:main/domain/uimodel/item_content_ui_model.dart';
 import 'package:main/utilities/styles.dart';
 

@@ -35,5 +35,28 @@ class LearningCubit extends Cubit<LearningState> {
     emit(state.copyWith(isInInsightProgress: true, insightList: null));
   }
 
-  getELearning() async {}
+  void getELearning() async {
+    _eLearningProgress();
+
+    final result = await _repository.getElearnigngContent();
+
+    result.fold(
+      (error) => emit(
+        state.copyWith(
+          isInError: true,
+          errorMsg: error.message.toString(),
+        ),
+      ),
+      (data) => emit(
+        state.copyWith(
+          elearningList: data,
+          isInElearningProgress: false,
+        ),
+      ),
+    );
+  }
+
+  void _eLearningProgress() {
+    emit(state.copyWith(isInElearningProgress: true, elearningList: null));
+  }
 }

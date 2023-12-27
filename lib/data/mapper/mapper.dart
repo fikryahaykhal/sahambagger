@@ -1,4 +1,5 @@
 import 'package:main/data/dto/item_content_dto.dart';
+import 'package:main/data/services/query/object/elearning_object.dart';
 import 'package:main/data/services/query/object/profile_object.dart';
 import 'package:main/data/services/query/object/subscription_object.dart';
 import 'package:main/domain/uimodel/item_content_ui_model.dart';
@@ -40,6 +41,17 @@ extension ItemContentDTOMapper on ItemContentDTO {
       title ?? '',
       featureImage ?? '',
       slug ?? '',
+    );
+  }
+}
+
+extension ELearnignObjectMapper on ELearnignObject {
+  ItemContentUiModel toUiModel() {
+    return ItemContentUiModel(
+      objectId ?? '',
+      title,
+      url,
+      isVip ? 'VIP' : 'Free',
     );
   }
 }

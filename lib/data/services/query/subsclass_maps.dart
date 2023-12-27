@@ -1,3 +1,4 @@
+import 'package:main/data/services/query/object/elearning_object.dart';
 import 'package:main/data/services/query/object/profile_object.dart';
 import 'package:main/data/services/query/object/subscription_object.dart';
 import 'package:main/data/services/query/object/survey_object.dart';
@@ -8,5 +9,6 @@ Map<String, ParseObjectConstructor> get subsclassMaps {
     'Profile': () => ProfileObject(),
     'Subscription': () => SubscriptionObject(),
     'Survey': () => SurveyObject(),
+    'ELearning': () => ELearnignObject(),
   };
 }

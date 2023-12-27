@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:main/bloc/learning/learning_cubit.dart';
 import 'package:main/components/trasnparent_card.dart';
-import 'package:main/domain/uimodel/item_content_ui_model.dart';
 import 'package:main/presenter/uikit/cards/content_card.dart';
 import 'package:main/utilities/styles.dart';
 
@@ -76,24 +75,26 @@ class _LearningScreenState extends State<LearningScreen>
                       indicatorColor: Colors.transparent,
                       tabs: [
                         SizedBox(
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            child: ClipRRect(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(16)),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white.withAlpha(15),
+                                border: Border.all(
+                                    color: Colors.white.withAlpha(10)),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(16)),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white.withAlpha(15),
-                                    border: Border.all(
-                                        color: Colors.white.withAlpha(10)),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(16)),
-                                  ),
-                                  child: const ExtendedTab(
-                                    text: 'Insight',
-                                    scrollDirection: Axis.vertical,
-                                  ),
-                                ))),
+                              ),
+                              child: const ExtendedTab(
+                                text: 'Insight',
+                                scrollDirection: Axis.vertical,
+                              ),
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           width: MediaQuery.of(context).size.width,
                           height: 45,
@@ -168,7 +169,7 @@ class InsightTab extends StatelessWidget {
           child: MediaQuery.removePadding(
             removeTop: true,
             context: context,
-            child: list != null
+            child: list != null && !isInProgress
                 ? GridView.builder(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent:
@@ -200,35 +201,47 @@ class ELearningTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            stops: [0.1, 0.4, 0.7, 0.9],
-            colors: [
-              Color(0xFF000033), // Darker Navy
-              Color(0xFF1A5276), // Darker RoyalBlue
-              Color(0xFF1D5F7A), // Even darker version of RoyalBlue
-              Color(0xFF1F618D),
-            ],
-          ),
-        ),
-        child: MediaQuery.removePadding(
-          context: context,
-          removeTop: true,
-          child: GridView.builder(
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: MediaQuery.of(context).size.width,
-                mainAxisExtent: MediaQuery.of(context).size.height * 0.3),
-            itemCount: 10,
-            itemBuilder: (BuildContext context, int index) {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                child: TransparentCard(child: Text('')),
-              );
-            },
-          ),
-        ));
+    return BlocBuilder<LearningCubit, LearningState>(
+      builder: (context, state) {
+        final isInProgress = state.isInElearningProgress;
+        final list = state.elearningList;
+        return Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.1, 0.4, 0.7, 0.9],
+                colors: [
+                  Color(0xFF000033), // Darker Navy
+                  Color(0xFF1A5276), // Darker RoyalBlue
+                  Color(0xFF1D5F7A), // Even darker version of RoyalBlue
+                  Color(0xFF1F618D),
+                ],
+              ),
+            ),
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: list != null && !isInProgress
+                  ? GridView.builder(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          maxCrossAxisExtent: MediaQuery.of(context).size.width,
+                          mainAxisExtent:
+                              MediaQuery.of(context).size.height * 0.3),
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return const Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 32, vertical: 16),
+                          child: TransparentCard(child: Text('')),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+            ));
+      },
+    );
   }
 }
