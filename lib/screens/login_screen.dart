@@ -8,9 +8,7 @@ import 'package:main/bloc/auth/login/login_cubit.dart';
 import 'package:main/components/rounded_button.dart';
 import 'package:main/components/trasnparent_card.dart';
 import 'package:main/route/app_router.gr.dart';
-import 'package:main/screens/register_screen.dart';
 import 'package:main/utilities/styles.dart';
-import 'package:main/injector.dart' as di;
 
 @RoutePage()
 class LoginScreen extends StatefulWidget {
@@ -27,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailNode = FocusNode();
   final passwordNode = FocusNode();
 
-  final cubit = di.locator<LoginCubit>();
+  final cubit = LoginCubit();
 
   @override
   void initState() {
@@ -123,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               const SizedBox(height: 16),
                               userInput(
                                 emailController,
-                                'Email',
+                                'Username',
                                 TextInputType.emailAddress,
                                 false,
                                 focusNode: emailNode,

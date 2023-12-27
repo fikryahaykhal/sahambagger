@@ -8,7 +8,6 @@ import 'package:main/components/trasnparent_card.dart';
 import 'package:main/domain/uimodel/item_content_ui_model.dart';
 import 'package:main/presenter/uikit/cards/content_card.dart';
 import 'package:main/utilities/styles.dart';
-import 'package:main/injector.dart' as di;
 
 @RoutePage()
 class LearningScreen extends StatefulWidget {
@@ -22,7 +21,7 @@ class _LearningScreenState extends State<LearningScreen>
     with TickerProviderStateMixin {
   late TabController tabController;
 
-  final cubit = di.locator<LearningCubit>();
+  final cubit = LearningCubit();
 
   @override
   void initState() {
