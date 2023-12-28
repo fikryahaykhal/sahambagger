@@ -34,6 +34,7 @@ class DashboardGuard extends AutoRouteGuard {
     if (isWasStarted) {
       resolver.redirect(const LoginRoute());
     } else {
+      Prefs.setWasStarted(true);
       resolver.redirect(const OnboardingRoute());
     }
   }

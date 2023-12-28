@@ -16,10 +16,16 @@ Future<void> main() async {
   final keyClientKey = dotenv.get('PARSE_CLIENT_KEY');
   final keyParseServerUrl = dotenv.get('PARSE_URL');
 
-  await Parse().initialize(keyApplicationId, keyParseServerUrl,
-      clientKey: keyClientKey,
-      autoSendSessionId: true,
-      registeredSubClassMap: subsclassMaps);
+  await Parse().initialize(
+    keyApplicationId,
+    keyParseServerUrl,
+    clientKey: keyClientKey,
+    autoSendSessionId: true,
+    registeredSubClassMap: subsclassMaps,
+    parseUserConstructor: (username, password, emailAddress,
+            {client, debug, sessionToken}) =>
+        ParseUser(username, password, emailAddress),
+  );
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

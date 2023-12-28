@@ -127,8 +127,8 @@ class _LearningScreenState extends State<LearningScreen>
                   Expanded(
                     child: TabBarView(
                       controller: tabController,
-                      children: const [
-                        InsightTab(),
+                      children: [
+                        InsightTab(cubit: cubit),
                         ELearningTab(),
                       ],
                     ),
@@ -144,7 +144,8 @@ class _LearningScreenState extends State<LearningScreen>
 }
 
 class InsightTab extends StatelessWidget {
-  const InsightTab({super.key});
+  final LearningCubit cubit;
+  const InsightTab({super.key, required this.cubit});
 
   @override
   Widget build(BuildContext context) {
@@ -152,43 +153,48 @@ class InsightTab extends StatelessWidget {
       builder: (context, state) {
         final isInProgress = state.isInInsightProgress;
         final list = state.insightList;
-        return Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              stops: [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                Color(0xFF000033), // Darker Navy
-                Color(0xFF1A5276), // Darker RoyalBlue
-                Color(0xFF1D5F7A), // Even darker version of RoyalBlue
-                Color(0xFF1F618D),
-              ],
+        return RefreshIndicator(
+          onRefresh: () async {
+            cubit.getInsight();
+          },
+          child: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                stops: [0.1, 0.4, 0.7, 0.9],
+                colors: [
+                  Color(0xFF000033), // Darker Navy
+                  Color(0xFF1A5276), // Darker RoyalBlue
+                  Color(0xFF1D5F7A), // Even darker version of RoyalBlue
+                  Color(0xFF1F618D),
+                ],
+              ),
             ),
-          ),
-          child: MediaQuery.removePadding(
-            removeTop: true,
-            context: context,
-            child: list != null && !isInProgress
-                ? GridView.builder(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent:
-                          MediaQuery.of(context).size.width * 0.5,
-                    ),
-                    itemCount: list.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final data = list[index];
+            child: MediaQuery.removePadding(
+              removeTop: true,
+              context: context,
+              child: list != null && !isInProgress
+                  ? GridView.builder(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent:
+                            MediaQuery.of(context).size.width * 0.5,
+                      ),
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final data = list[index];
 
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 8),
-                        child: UiKitItemContent(data: data),
-                      );
-                    },
-                  )
-                : const Center(
-                    child: CircularProgressIndicator(),
-                  ),
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 8),
+                          child: UiKitItemContent(data: data),
+                        );
+                      },
+                    )
+                  : const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+            ),
           ),
         );
       },

@@ -35,10 +35,11 @@ class ContentRepositoryImpl extends ContentRepository {
         return left(Failure(response.error?.message));
       }
 
-      final data = response.result;
+      final data = response.results;
 
       return right(
-          data.map((e) => (e as ELearnignObject).toUiModel()).toList());
+        data?.map((e) => (e as ELearnignObject).toUiModel()).toList() ?? [],
+      );
     } on DioException catch (e) {
       return left(Failure(e.message));
     } catch (e) {
