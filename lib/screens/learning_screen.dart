@@ -9,6 +9,7 @@ import 'package:main/domain/uimodel/item_content_ui_model.dart';
 import 'package:main/presenter/uikit/cards/content_card.dart';
 import 'package:main/utilities/styles.dart';
 import 'package:main/injector.dart' as di;
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 @RoutePage()
 class LearningScreen extends StatefulWidget {
@@ -221,12 +222,40 @@ class ELearningTab extends StatelessWidget {
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 maxCrossAxisExtent: MediaQuery.of(context).size.width,
-                mainAxisExtent: MediaQuery.of(context).size.height * 0.3),
-            itemCount: 10,
+                mainAxisExtent: MediaQuery.of(context).size.height * 0.33),
+            itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
-              return const Padding(
+              return Padding(
                 padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                child: TransparentCard(child: Text('')),
+                child: TransparentCard(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      YoutubePlayer(
+                        controller: YoutubePlayerController(
+                          initialVideoId: 'AazhHUSacKM',
+                          flags: YoutubePlayerFlags(
+                            autoPlay: true,
+                            mute: false,
+                          ),
+                        ),
+                        showVideoProgressIndicator: true,
+                        progressIndicatorColor: Colors.blueAccent,
+                        progressColors: ProgressBarColors(
+                          playedColor: Colors.blue,
+                          handleColor: Colors.blueAccent,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        'Course 1',
+                        style: kSubtitleBoldStyle,
+                      )
+                    ],
+                  ),
+                ),
               );
             },
           ),

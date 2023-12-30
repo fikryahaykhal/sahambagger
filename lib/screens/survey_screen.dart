@@ -30,17 +30,41 @@ List<String> _dropdownItems1 = [
 String _selectedItem2 = 'Masih Awam / Baru Mulai';
 List<String> _dropdownItems2 = ['Masih Awam / Baru Mulai', 'Sudah Mandiri'];
 
-String _selectedItem3 = 'Masih Awam / Baru Mulai';
-List<String> _dropdownItems3 = ['Masih Awam / Baru Mulai', 'Sudah Mandiri'];
+String _selectedItem3 = 'Belajar tentang Framework Momentum Investing';
+List<String> _dropdownItems3 = [
+  'Belajar tentang Framework Momentum Investing',
+  'Mengikuti signal VIP Momentum trade (Short-Medium term)',
+  'Mencari insight untuk Value Investing (Medium-Long term)',
+  'menggunakan App (Dashboard dan Screening) untuk membantu decision making'
+];
 
-String _selectedItem4 = 'Masih Awam / Baru Mulai';
-List<String> _dropdownItems4 = ['Masih Awam / Baru Mulai', 'Sudah Mandiri'];
+String _selectedItem4 = 'Konservatif - Dibawah 30% total net worth';
+List<String> _dropdownItems4 = [
+  'Konservatif - Dibawah 30% total net worth',
+  'Medium - 30% - 60% total net worth',
+  'Agresif - Diatas 60% total net worth'
+];
 
-String _selectedItem5 = 'Masih Awam / Baru Mulai';
-List<String> _dropdownItems5 = ['Masih Awam / Baru Mulai', 'Sudah Mandiri'];
+String _selectedItem5 = '1 - 3 Saham';
+List<String> _dropdownItems5 = [
+  '1 - 3 Saham',
+  'S 4 - 6 Saham',
+  '6 - 10 Saham',
+  '10 - 20 Saham',
+  'Diatas 20 Saham'
+];
 
-String _selectedItem6 = 'Masih Awam / Baru Mulai';
-List<String> _dropdownItems6 = ['Masih Awam / Baru Mulai', 'Sudah Mandiri'];
+String _selectedItem6 = 'Dibawah 10 Juta';
+List<String> _dropdownItems6 = [
+  'Dibawah 10 Juta',
+  '10-50 Juta',
+  '50-100 Juta',
+  '100-500 Juta',
+  '500 Juta - 1 Milyar',
+  ' 1 - 5 Milyar',
+  '5 - 15 Milyar',
+  'Diatas 15 Milyar'
+];
 
 class _SurveyScreenState extends State<SurveyScreen> {
   final PageController _pageController = PageController(initialPage: 0);
@@ -161,7 +185,7 @@ class _SurveyScreenState extends State<SurveyScreen> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 14),
           child: const Text(
-            'Mana yang paling menggambarkan kemampuan Investasi Anda saat ini?',
+            'Darimana Anda Mengenal Sahambagger?',
             style: kMediumContentStyle,
           ),
         ),
@@ -169,12 +193,12 @@ class _SurveyScreenState extends State<SurveyScreen> {
           height: 8,
         ),
         dropdownInput(
-          _selectedItem2,
-          _dropdownItems2,
+          _selectedItem1,
+          _dropdownItems1,
           (String? newValue) {
             setState(() {
               if (newValue != null) {
-                _selectedItem2 = newValue;
+                _selectedItem1 = newValue;
               }
             });
           },

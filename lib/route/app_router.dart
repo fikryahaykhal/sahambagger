@@ -16,9 +16,9 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: BottomNavbarRoute.page, guards: [
           DashboardGuard()
         ], children: [
-          AutoRoute(page: DashboardRoute.page, initial: true),
+          AutoRoute(page: DashboardRoute.page),
           AutoRoute(page: LearningRoute.page),
-          AutoRoute(page: HomeRoute.page),
+          AutoRoute(page: HomeRoute.page, initial: true),
           AutoRoute(page: ProfileRoute.page),
           AutoRoute(page: TablesRoute.page),
         ])
