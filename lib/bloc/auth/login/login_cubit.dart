@@ -1,17 +1,15 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:main/core/failure.dart';
 import 'package:main/domain/repository/auth_repository.dart';
-import 'package:main/utilities/strings.dart';
+import 'package:main/injector.dart' as di;
 
 part 'login_state.dart';
 part 'login_cubit.freezed.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  final AuthRepository _repository;
-  LoginCubit(this._repository) : super(LoginState.initial());
+  final _repository = di.locator<AuthRepository>();
+  LoginCubit() : super(LoginState.initial());
 
   void changeEmail(String email) {
     emit(state.copyWith(

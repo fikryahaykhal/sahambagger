@@ -11,6 +11,7 @@ import 'package:main/utilities/styles.dart';
 import 'package:main/injector.dart' as di;
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+
 @RoutePage()
 class LearningScreen extends StatefulWidget {
   const LearningScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _LearningScreenState extends State<LearningScreen>
     with TickerProviderStateMixin {
   late TabController tabController;
 
-  final cubit = di.locator<LearningCubit>();
+  final cubit = LearningCubit();
 
   @override
   void initState() {
