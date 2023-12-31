@@ -12,6 +12,14 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  String _selectedItem = 'BBCA';
+  List<String> _dropdownItems = [
+    'BBCA',
+    'TLKM',
+    'BBRI',
+    'BBNI',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,15 +62,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Text(
-                            'Pilih Saham',
-                            style: kSubtitleBoldStyle,
+                          Container(
+                            height: 50,
+                            child: const Text(
+                              'Pilih Saham',
+                              style: kSubtitleBoldStyle,
+                            ),
                           ),
                           const SizedBox(
-                            width: 16,
+                            width: 24,
                           ),
-                          Container(),
+                          dropdownInput(
+                            _selectedItem,
+                            _dropdownItems,
+                            (String? newValue) {
+                              setState(() {
+                                if (newValue != null) {
+                                  _selectedItem = newValue;
+                                }
+                              });
+                            },
+                          ),
                         ],
                       ),
                     ),
@@ -72,26 +94,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(
                       height: 24,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40.0),
-                      child: Text(
-                        'Small-bite Insight',
-                        style: kSubtitleBoldStyle,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      child: ListView.builder(
-                          itemCount: 4,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ListCard(child: Container());
-                          }),
-                    ),
                   ],
                 ),
               ),
@@ -100,5 +102,47 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
       ),
     ));
+  }
+
+  Widget dropdownInput(
+    String selectedItem,
+    List<String> dropdownItems,
+    void Function(String?) onChanged,
+  ) {
+    return Container(
+      height: 50,
+      width: MediaQuery.of(context).size.width * 0.4,
+      margin: const EdgeInsets.only(bottom: 15),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.2),
+        borderRadius: BorderRadius.circular(30),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25.0, right: 25),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            value: selectedItem,
+            items: dropdownItems.map((String item) {
+              return DropdownMenuItem<String>(
+                value: item,
+                child: Text(
+                  item,
+                  style: kMediumContentStyle,
+                ),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              if (newValue != null) {
+                onChanged(newValue);
+              }
+            },
+            isExpanded: true,
+            icon: Icon(Icons.arrow_drop_down, color: Colors.white),
+            style: kMediumContentStyle.copyWith(color: Colors.white),
+            dropdownColor: Colors.deepPurple.withOpacity(0.8),
+          ),
+        ),
+      ),
+    );
   }
 }
